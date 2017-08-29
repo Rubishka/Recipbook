@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/main_user"
-        android:icon="@drawable/chef"
-        android:showAsAction="always"
-        android:title="add"
-
-        />
-
-
 <!--
     <item android:id="@+id/main_add"
         android:icon="@android:drawable/ic_menu_add"

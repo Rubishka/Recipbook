@@ -3,21 +3,33 @@ package com.rubi.recipbook;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
 
 public class MainActivity extends Activity
         implements RecipeDetailsFragment.OnHeadlineSelectedListener{
 
      String recipeID;
+    static final int REQUEST_WRITE_STORAGE = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        boolean hasPermission = (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED);
+        if (!hasPermission) {
+            ActivityCompat.requestPermissions(this,new String[]{
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_STORAGE);
+        }
         RecipeListFragment listFragment = RecipeListFragment.newInstance();
         FragmentTransaction tran = getFragmentManager().beginTransaction();
         tran.replace(R.id.main_container,listFragment);
@@ -32,15 +44,13 @@ public class MainActivity extends Activity
         return true;
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Fragment fragment = null;
         int itemId = item.getItemId();
         switch (itemId){
-            case R.id.main_add:
-                fragment = AddRecipeFragment.newInstance();
+            case R.id.main_user:
+                fragment = UserRecipeFragment.newInstance();
                 break;
             case android.R.id.home:
                 fragment=RecipeListFragment.newInstance();
@@ -65,15 +75,6 @@ public class MainActivity extends Activity
         }
         return true;
     }
-
-/*    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }*/
 
     @Override
     public void onArticleSelected(String recipeID) {

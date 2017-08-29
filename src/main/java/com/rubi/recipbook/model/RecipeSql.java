@@ -39,7 +39,7 @@ public class RecipeSql {
                 Recipe rcp = new Recipe();
                 rcp.id = cursor.getString(idIndex);
                 rcp.recipeName = cursor.getString(nameIndex);
-                rcp.checked = (cursor.getInt(checkIndex) == 1);
+                rcp.vegetarian = (cursor.getInt(checkIndex) == 1);
                 rcp.imageUrl = cursor.getString(imageUrlIndex);
                 rcp.lastUpdateDate = cursor.getDouble(lastUpdateDateIndex);
                 rcp.shortDescription=cursor.getString(descIndex);
@@ -61,7 +61,7 @@ public class RecipeSql {
         values.put(RECIPE_BY, rcp.recipeBy);
         values.put(RECIPE_INGREDIENT, rcp.ingredient);
         values.put(RECIPE_DIRECTION, rcp.direction);
-        if (rcp.checked) {
+        if (rcp.vegetarian) {
             values.put(RECIPE_CHECK, 1);
         } else {
             values.put(RECIPE_CHECK, 0);
@@ -69,7 +69,7 @@ public class RecipeSql {
         values.put(RECIPE_IMAGE_URL, rcp.imageUrl);
         values.put(RECIPE_LAST_UPDATE, rcp.lastUpdateDate);
         db.insert(RECIPE_TABLE, RECIPE_ID, values);
-        //db.update(RECIPE_TABLE, values, "rcpid=" + rcp.id, null);
+        //rdb.update(RECIPE_TABLE, values, "rcpid=" + rcp.id, null);
             Log.d("TAG", "insert recipe " + rcp.id + " to DB");
         }
 
@@ -100,7 +100,7 @@ public class RecipeSql {
             do {
                 rcp.id = cursor.getString(idIndex);
                 rcp.recipeName = cursor.getString(nameIndex);
-                rcp.checked = (cursor.getInt(checkIndex) == 1);
+                rcp.vegetarian = (cursor.getInt(checkIndex) == 1);
                 rcp.imageUrl = cursor.getString(imageUrlIndex);
                 rcp.lastUpdateDate = cursor.getDouble(lastUpdateDateIndex);
                 rcp.shortDescription=cursor.getString(descIndex);
@@ -127,13 +127,11 @@ public class RecipeSql {
                 RECIPE_IMAGE_URL + " TEXT);";
         Log.d("TAG",sql);
         db.execSQL(sql);
-
     }
 
     static public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table " + RECIPE_TABLE + ";");
         onCreate(db);
     }
-
 
 }

@@ -8,9 +8,7 @@ public class ModelMem {
 
     private List<Recipe> data = new LinkedList<Recipe>();
 
-    ModelMem(){
-
-    }
+    ModelMem(){}
 
     List<Recipe> getAllRecipes(){
         return data;

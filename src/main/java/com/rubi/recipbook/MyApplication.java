@@ -3,8 +3,6 @@ package com.rubi.recipbook;
 import android.app.Application;
 import android.content.Context;
 
-
-
 public class MyApplication extends Application {
     private static Context context;
 
@@ -13,7 +11,6 @@ public class MyApplication extends Application {
         super.onCreate();
         context = getApplicationContext();
     }
-
 
     public static Context getMyContext(){
         return context;

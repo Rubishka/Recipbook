@@ -36,32 +36,13 @@ public class RecipeListAdapter extends BaseAdapter {
 
     List<Recipe> data = new ArrayList<>();
 
-
-    // This method will be called when a MessageEvent is posted
-    // (in the UI thread for Toast)
-
-    class CBListener implements View.OnClickListener{
-        @Override
-        public void onClick(View v) {
-            int pos = (int)v.getTag();
-            Recipe st = data.get(pos);
-            st.checked = !st.checked;
-        }
-    }
-
-
-    CBListener listener = new  CBListener();
-
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null){
             LayoutInflater lInflater = (LayoutInflater)MyApplication.getMyContext().getSystemService(
                     Activity.LAYOUT_INFLATER_SERVICE);
             convertView = lInflater.inflate(R.layout.recipes_list_row, null);
-            //CheckBox cb = (CheckBox) convertView.findViewById(R.id.list);
-            //cb.setOnClickListener(listener);
         }
-
 
         final TextView nameTV = (TextView) convertView.findViewById(R.id.listAdapter_name);
         final TextView descriptionTV= (TextView) convertView.findViewById(R.id.listAdapter_description);
@@ -70,14 +51,13 @@ public class RecipeListAdapter extends BaseAdapter {
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.listAdapter_progressBar);
         progressBar.setVisibility(View.GONE);
 
-
         final Recipe rcp = data.get(position);
 
         nameTV.setText(rcp.recipeName);
         descriptionTV.setText(rcp.shortDescription);
         recipeByTV.setText(rcp.recipeBy);
         imageView.setTag(rcp.imageUrl);
-        imageView.setImageDrawable(MyApplication.getMyContext().getDrawable(R.drawable.avatar));
+        imageView.setImageDrawable(MyApplication.getMyContext().getDrawable(R.drawable.food));
 
         if (rcp.imageUrl != null && !rcp.imageUrl.isEmpty() && !rcp.imageUrl.equals("")){
             progressBar.setVisibility(View.VISIBLE);

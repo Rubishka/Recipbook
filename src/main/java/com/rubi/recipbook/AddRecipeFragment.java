@@ -16,10 +16,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rubi.recipbook.model.Model;
 import com.rubi.recipbook.model.Recipe;
+import com.rubi.recipbook.model.User;
 
 import static android.R.attr.data;
 import static android.app.Activity.RESULT_OK;
@@ -52,6 +54,7 @@ public class AddRecipeFragment extends Fragment {
         menu.clear(); // clears all menu items..
         getActivity().getMenuInflater().inflate(R.menu.empty_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
+        getActivity().setTitle("New recipe");
     }
 
     @Override
@@ -62,11 +65,15 @@ public class AddRecipeFragment extends Fragment {
         final EditText nameEt = (EditText) contentView.findViewById(R.id.addRecipe_name);
         final EditText idEt= (EditText) contentView.findViewById(R.id.addRecipe_ID);
         final EditText descriptionEt= (EditText) contentView.findViewById(R.id.addRecipe_description);
-        final EditText recipeByEt= (EditText) contentView.findViewById(R.id.addRecipe_RecipeBy);
+
+        final TextView recipeByEt= (TextView) contentView.findViewById(R.id.addRecipe_RecipeBy);
+
+                recipeByEt.setText(Model.instace.getUser().name);
+
         final EditText ingredientEt= (EditText) contentView.findViewById(R.id.addRecipe_ingredient);
-        final EditText directionEt= (EditText) contentView.findViewById(R.id.addRecipe_description);
+        final EditText directionEt= (EditText) contentView.findViewById(R.id.addRecipe_directions);
         //final EditText lastUpdateDateEt= (EditText) contentView.findViewById(R.id.mainPhoneTv);
-        final CheckBox cb = (CheckBox) contentView.findViewById(R.id.addRecipe_CB);
+        final CheckBox vegetarian = (CheckBox) contentView.findViewById(R.id.addRecipe_CB);
         //final MyDatePicker datePicker = (MyDatePicker) contentView.findViewById(R.id.add_recipe_birth_date);
         imageView = (ImageView) contentView.findViewById(R.id.addRecipe_Image);
 
@@ -92,7 +99,7 @@ public class AddRecipeFragment extends Fragment {
                 rcp.ingredient= ingredientEt.getText().toString();
                 rcp.direction= directionEt.getText().toString();
                 rcp.imageUrl = "";
-                rcp.checked = false;
+                rcp.vegetarian = false;
                 if (imageBitmap != null) {
                     Model.instace.saveImage(imageBitmap, rcp.id + ".jpeg", new Model.SaveImageListener() {
                         @Override

@@ -8,14 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ModelSql extends SQLiteOpenHelper {
 
     ModelSql(Context context) {
-        super(context, "database.db", null, 10);
-
+        super(context, "database.db", null, 14);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         RecipeSql.onCreate(db);
-        //db.delete("recipe",null,null);
     }
 
     @Override

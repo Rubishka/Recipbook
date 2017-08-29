@@ -18,13 +18,14 @@ android:id="@+id/recipe_list"
     </ListView>
 
 
-<!--    <ImageButton
+  <ImageButton
         android:id="@+id/stlist_add"
         android:layout_gravity="right|bottom"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/button_add"
-        android:scaleType="fitXY"/>-->
+        android:src="@drawable/add_food"
+        android:background="@null"
+        android:scaleType="fitXY"/>
 
 </FrameLayout>
 </LinearLayout>

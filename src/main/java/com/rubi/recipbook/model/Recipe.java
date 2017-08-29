@@ -10,5 +10,5 @@ public class Recipe {
     public String ingredient;
     public String direction;
     public double lastUpdateDate;
-    public Boolean checked;
+    public Boolean vegetarian;
 }

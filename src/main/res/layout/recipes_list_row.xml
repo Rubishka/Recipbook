@@ -26,13 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/avatar" />
+            android:src="@drawable/food" />
 
         <ProgressBar
             android:id="@+id/listAdapter_progressBar"
-            android:layout_gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
     </FrameLayout>
 
 
@@ -44,17 +44,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/listAdapter_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
 
 
     <LinearLayout
@@ -78,6 +67,24 @@
             android:layout_margin="10dp"/>
     </LinearLayout>
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/listAdapter_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

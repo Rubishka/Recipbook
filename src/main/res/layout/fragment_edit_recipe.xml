@@ -7,204 +7,217 @@
     tools:context="com.rubi.recipbook.EditRecipeFragment"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="Recipe name:"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/editRecipe_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/editRecipe_Image"
-            android:layout_gravity="center"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/avatar" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Recipe name:"
+                    android:textSize="18sp" />
 
-        <ProgressBar
-            android:id="@+id/editRecipe_progressBar"
-            android:layout_width="100dp"
-            android:layout_gravity="center"
-            android:layout_height="100dp" />
-    </FrameLayout>
+                <EditText
+                    android:id="@+id/editRecipe_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="Description:"
-            android:textSize="18sp" />
+                <ImageView
+                    android:id="@+id/editRecipe_Image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/food" />
 
-        <EditText
-            android:id="@+id/editRecipe_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/editRecipe_progressBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recipe by:"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Description:"
+                    android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/editRecipe_RecipeBy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/editRecipe_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recipe ID:"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Recipe by:"
+                    android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/editRecipe_ID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+                <EditText
+                    android:id="@+id/editRecipe_RecipeBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="Recipe ID:"
+                    android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="ingredient:"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/editRecipe_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
 
-        <EditText
-            android:id="@+id/editRecipe_ingredient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="directions:"
-            android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="ingredient:"
+                    android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/aeditRecipe_directions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/editRecipe_ingredient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/editRecipe_CB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:focusable="false"
-            android:layout_margin="10dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:text="Checked"
-            android:textSize="18dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="directions:"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/aeditRecipe_directions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/editRecipe_CB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:focusable="false"
+                    android:scaleX="2"
+                    android:scaleY="2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Vegetarian"
+                    android:textSize="18dp" />
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        >
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
-        <Button
-            android:id="@+id/editRecipe_CancelBtn"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:text="CANCEL"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"/>
-        <Button
-            android:id="@+id/editRecipe_deleteBtn"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:text="DELETE"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/editRecipe_CancelBtn"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="CANCEL" />
 
-        <Button
-            android:id="@+id/editRecipe_SaveBtn"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/editRecipe_deleteBtn"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="DELETE" />
+
+                <Button
+                    android:id="@+id/editRecipe_SaveBtn"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="SAVE" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

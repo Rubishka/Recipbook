@@ -84,7 +84,7 @@ public class EditRecipeFragment extends Fragment    {
         idEt= (TextView) contentView.findViewById(R.id.editRecipe_ID);
         descriptionEt= (EditText) contentView.findViewById(R.id.editRecipe_description);
         recipebyEt= (EditText) contentView.findViewById(R.id.editRecipe_RecipeBy);
-        directionEt= (EditText) contentView.findViewById(R.id.editRecipe_description);
+        directionEt= (EditText) contentView.findViewById(R.id.aeditRecipe_directions);
         ingredientEt= (EditText) contentView.findViewById(R.id.editRecipe_ingredient);
         //date = (MyDatePicker) contentView.findViewById(R.id.edit_recipe_birth_date);
         cb = (CheckBox) contentView.findViewById(R.id.editRecipe_CB);
@@ -95,21 +95,19 @@ public class EditRecipeFragment extends Fragment    {
 
 
         final String recipeID=getArguments().getString("recipeID");
-        Model.instace.getRecipe(recipeID, new Model.GetRecipeCallback() {
-            @Override
-            public void onComplete(Recipe recipe) {
-               rcp = recipe;
-                Log.d("TAG","got recipe name: " + recipe.recipeName);
+
+               rcp = Model.instace.getRecipe(recipeID);
+                Log.d("TAG","got recipe name: " + rcp.recipeName);
                 nameEt.setText(rcp.recipeName);
                 idEt.setText(rcp.id);
                 descriptionEt.setText(rcp.shortDescription);
                 directionEt.setText(rcp.direction);
                 recipebyEt.setText(rcp.recipeBy);
                 ingredientEt.setText(rcp.ingredient);
-                cb.setChecked(rcp.checked);
+                cb.setChecked(rcp.vegetarian);
                 imageView.setTag(rcp.imageUrl);
 
-                imageView.setImageDrawable(MyApplication.getMyContext().getDrawable(R.drawable.avatar));
+                imageView.setImageDrawable(MyApplication.getMyContext().getDrawable(R.drawable.food));
 
                 if (rcp.imageUrl != null && !rcp.imageUrl.isEmpty() && !rcp.imageUrl.equals("")){
                     progressBar.setVisibility(View.VISIBLE);
@@ -150,7 +148,7 @@ public class EditRecipeFragment extends Fragment    {
                         rcp.ingredient= ingredientEt.getText().toString();
                         rcp.direction= directionEt.getText().toString();
                         rcp.imageUrl = "";
-                        rcp.checked = false;
+                        rcp.vegetarian = false;
                         if (imageBitmap != null) {
                             Model.instace.saveImage(imageBitmap, rcp.id + ".jpeg", new Model.SaveImageListener() {
                                 @Override
@@ -182,7 +180,6 @@ public class EditRecipeFragment extends Fragment    {
                     @Override
                     public void onClick(View v) {
                         getFragmentManager().popBackStack();
-
                     }
                 });
 
@@ -193,28 +190,16 @@ public class EditRecipeFragment extends Fragment    {
                         RecipeListFragment listFragment = RecipeListFragment.newInstance();
                         FragmentTransaction tran = getFragmentManager().beginTransaction();
                         tran.replace(R.id.main_container,listFragment);
-                        getFragmentManager().popBackStack();
+                        //getFragmentManager().popBackStack();
                         tran.commit();
                     }
                 });
-
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dispatchTakePictureIntent();
                     }
                 });
-
-            }
-
-            @Override
-            public void onCancel() {
-                // TODO Not found
-            }
-        });
-
-
-
         return contentView;
     }
 
