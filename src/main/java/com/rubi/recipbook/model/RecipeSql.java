@@ -47,7 +47,7 @@ public class RecipeSql {
                 rcp.ingredient = cursor.getString(ingredientIndex);
                 rcp.direction = cursor.getString(directionIndex);
                 list.add(rcp);
-                Log.d("TAG", "get recipe "+rcp.id +" from DB");
+
             } while (cursor.moveToNext());
         }
         return list;
@@ -70,7 +70,7 @@ public class RecipeSql {
         values.put(RECIPE_LAST_UPDATE, rcp.lastUpdateDate);
         db.insert(RECIPE_TABLE, RECIPE_ID, values);
         //rdb.update(RECIPE_TABLE, values, "rcpid=" + rcp.id, null);
-            Log.d("TAG", "insert recipe " + rcp.id + " to DB");
+
         }
 
         static void deleteRecipe(SQLiteDatabase db, String rcpID) {
@@ -107,7 +107,6 @@ public class RecipeSql {
                 rcp.recipeBy = cursor.getString(recipeByIndex);
                 rcp.ingredient = cursor.getString(ingredientIndex);
                 rcp.direction = cursor.getString(directionIndex);
-                Log.d("TAG", "get recipe "+rcp.id +" from DB");
             } while (cursor.moveToNext());
         }
         return rcp;

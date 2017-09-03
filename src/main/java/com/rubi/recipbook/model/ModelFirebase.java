@@ -80,7 +80,6 @@ public class ModelFirebase {
                 }
             });
         } else {
-            Log.d("TAG", "user not found");
             callBack.onCancel();
         }
     }
@@ -141,7 +140,6 @@ public class ModelFirebase {
                 .addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d("TAG","onChildAdded called");
                 Recipe recipe = dataSnapshot.getValue(Recipe.class);
                 callback.onRecipeAdded(recipe);
             }
@@ -153,7 +151,6 @@ public class ModelFirebase {
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Recipe recipe = dataSnapshot.getValue(Recipe.class);
-                Log.d("TAG","notify to delete recipe "+ recipe.id);
                 callback.onRecipeDelete(recipe);
             }
             @Override
@@ -204,7 +201,6 @@ public class ModelFirebase {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception exception) {
-                Log.d("TAG",exception.getMessage());
                 listener.onFail();
             }
         });

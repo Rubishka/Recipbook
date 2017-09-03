@@ -56,8 +56,6 @@ public class Model {
     }
 
     public void deleteRecipe(String rcpID){
-        Log.d("TAG", "Trying to delete recipe "+ rcpID);
-        //RecipeSql.deleteRecipe(modelSql.getWritableDatabase(), rcpID);
         modelFirebase.deleteRecipe(rcpID, new ModelFirebase.DeleteRecipeCallback() {
             @Override
             public void onComplete() {
@@ -81,7 +79,6 @@ public class Model {
 
     public Recipe getRecipe(String rcpID){
         Recipe rcp =RecipeSql.getRecipe(modelSql.getReadableDatabase(),rcpID);
-        Log.d("TAG", "get the recipe " + rcp.id);
         return rcp;
 }
 
@@ -107,7 +104,6 @@ public class Model {
         //1. get local lastUpdateTade
         SharedPreferences pref = MyApplication.getMyContext().getSharedPreferences("TAG", Context.MODE_PRIVATE);
         final double lastUpdateDate = pref.getFloat("RecipesLastUpdateDate ",0);
-        Log.d("TAG","lastUpdateDate: " + lastUpdateDate);
 
         modelFirebase.registerRecipesUpdates(lastUpdateDate,new ModelFirebase.RegisterRecipesUpdatesCallback() {
             @Override
@@ -122,13 +118,11 @@ public class Model {
                             Context.MODE_PRIVATE).edit();
                     prefEd.putFloat("RecipesLastUpdateDate", (float) recipe.lastUpdateDate);
                     prefEd.commit();
-                    Log.d("TAG","RecipeLastUpdateDate: " + recipe.lastUpdateDate);
                 }
                 EventBus.getDefault().post(new UpdateRecipeEvent(recipe));
             }
             @Override
             public void onRecipeDelete(Recipe recipe) {
-                Log.d("TAG", "onRecipeDelete calld for delete recipe " + recipe.id);
                 RecipeSql.deleteRecipe(modelSql.getWritableDatabase(), recipe.id);
                 EventBus.getDefault().post(new DeleteRecipeEvent(recipe));
             }
@@ -142,7 +136,6 @@ public class Model {
     public void getAllRecipes(final GetAllRecipesAndObserveCallback callback){
         //5. read from local db
         List<Recipe> data = RecipeSql.getAllRecipes(modelSql.getReadableDatabase());
-        Log.d("TAG", "is getAllRecipes data empty? "+data.isEmpty());
         //6. return list of recipe
         callback.onComplete(data);
     }
@@ -180,21 +173,18 @@ public class Model {
             @Override
             public void onComplete(Bitmap bitmap) {
                 if (bitmap != null){
-                    Log.d("TAG","getImage from local success " + fileName);
                     listener.onSuccess(bitmap);
                 }else {
                     modelFirebase.getImage(url, new GetImageListener() {
                         @Override
                         public void onSuccess(Bitmap image) {
                             String fileName = URLUtil.guessFileName(url, null, null);
-                            Log.d("TAG","getImage from FB success " + fileName);
                             saveImageToFile(image,fileName);
                             listener.onSuccess(image);
                         }
 
                         @Override
                         public void onFail() {
-                            Log.d("TAG","getImage from FB fail ");
                             listener.onFail();
                         }
                     });
@@ -231,12 +221,10 @@ public class Model {
                         if (task.isSuccessful()) {
 
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
                             modelFirebase.getUser(new ModelFirebase.GetUserCallback() {
                                 @Override
                                 public void onComplete(User FBuser) {
                                     user=FBuser;
-                                    Log.d("TAG", "user name: "+user.name);
                                 }
                                 @Override
                                 public void onCancel() {
@@ -251,7 +239,7 @@ public class Model {
                     }
                 });
     }
-    
+
     public void createAccount(final String name, final String email, String password, Activity activity){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, new OnCompleteListener<AuthResult>() {
@@ -259,7 +247,6 @@ public class Model {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "createUserWithEmail:success");
                             FirebaseUser FBuser = mAuth.getCurrentUser();
                             User user=new User(name, FBuser.getUid(),email);
                             Model.instace.addUser(user);

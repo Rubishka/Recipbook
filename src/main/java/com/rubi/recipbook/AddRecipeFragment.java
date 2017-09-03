@@ -89,7 +89,6 @@ public class AddRecipeFragment extends Fragment {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
 
-                Log.d("TAG","Btn Save click");
                 final Recipe rcp = new Recipe();
 
                 rcp.id = idEt.getText().toString();

@@ -79,7 +79,5 @@ public class MainActivity extends Activity
     @Override
     public void onArticleSelected(String recipeID) {
         this.recipeID=recipeID;
-        Log.d("TAG", "Recipe id is"+ recipeID);
-
     }
 }

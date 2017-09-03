@@ -35,11 +35,8 @@ public class UserRecipeFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Model.UpdateRecipeEvent event) {
         Toast.makeText(MyApplication.getMyContext(), "New recipe added", Toast.LENGTH_SHORT).show();
-        Log.d("TAG", "Subscribe: UpdateRecipeEvent");
         boolean exist = false;
         for (Recipe rcp: adapter.data){
-
-            Log.d("TAG", "rcp in list fragment: "+rcp.recipeName);
             if (rcp.id.equals(event.recipe.id)){
                 rcp = event.recipe;
                 exist = true;
@@ -55,7 +52,6 @@ public class UserRecipeFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(Model.DeleteRecipeEvent event) {
-        Log.d("TAG", "notify delete");
         if (event.recipe.recipeBy.equals(userName)) {
             adapter.data.remove(event.recipe);
             adapter.notifyDataSetChanged();
@@ -92,10 +88,8 @@ public class UserRecipeFragment extends Fragment {
 
         list = (ListView) contentView.findViewById(R.id.stlist_list);
         adapter = new RecipeListAdapter();
-
         userName=Model.instace.getUser().name;
 
-        Log.d("TAG", "username is: "+userName);
         Model.instace.getAllRecipes(new Model.GetAllRecipesAndObserveCallback() {
             @Override
             public void onComplete(List<Recipe> list) {

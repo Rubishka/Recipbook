@@ -97,7 +97,6 @@ public class EditRecipeFragment extends Fragment    {
         final String recipeID=getArguments().getString("recipeID");
 
                rcp = Model.instace.getRecipe(recipeID);
-                Log.d("TAG","got recipe name: " + rcp.recipeName);
                 nameEt.setText(rcp.recipeName);
                 idEt.setText(rcp.id);
                 descriptionEt.setText(rcp.shortDescription);
@@ -139,7 +138,6 @@ public class EditRecipeFragment extends Fragment    {
                     public void onClick(View v) {
                         progressBar.setVisibility(View.VISIBLE);
 
-                        Log.d("TAG","Btn Save click");
                         final Recipe rcp = new Recipe();
                         rcp.id = idEt.getText().toString();
                         rcp.recipeName = nameEt.getText().toString();

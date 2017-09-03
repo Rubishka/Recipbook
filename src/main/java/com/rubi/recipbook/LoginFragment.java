@@ -53,11 +53,9 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -96,7 +94,6 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("TAG", "Register button");
 
                 RegisterFragment rgstrFrgmnt = RegisterFragment.newInstance();
                 FragmentTransaction tran = getFragmentManager().beginTransaction();
@@ -107,17 +104,6 @@ public class LoginFragment extends Fragment implements LoaderManager.LoaderCallb
         });
         return contentView;
     }
-
-/*    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            mLoginState.setText(
-                    "User ID: " + user.getUid());
-        } else {
-            mLoginState.setText(
-                    "Error: sign in failed.");
-        }
-    }*/
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.

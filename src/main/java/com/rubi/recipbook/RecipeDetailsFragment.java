@@ -89,7 +89,6 @@ public class RecipeDetailsFragment extends Fragment {
                     @Override
                     public void onComplete(Recipe recipe) {
                         rcp=recipe;
-                        Log.d("TAG", "got recipe name in fragment: " + rcp.recipeName);
 
                         TextView nameTV = (TextView) contentView.findViewById(R.id.detailRecipe_name);
                         nameTV.setText(rcp.recipeName);
